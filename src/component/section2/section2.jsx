@@ -1,5 +1,5 @@
 import React from 'react';
-import CatCarousel from '../carousel/carousel';
+import { CatCarousel } from '../carousel/carousel';
 import { Section } from '../section/section';
 import { Steps } from './config';
 

@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const CatCarousel = ({ Steps }) => {
+export const CatCarousel = ({ Steps }) => {
   const classes = useStyles(); //pentru a ne folosi de stilizarea de mai susl; classes cheama functia useStyles (callback)
   const theme = useTheme();
   const [activeStep, setActiveStep] = useState(0);
@@ -100,5 +100,3 @@ const CatCarousel = ({ Steps }) => {
     </div>
   );
 };
-
-export default CatCarousel
