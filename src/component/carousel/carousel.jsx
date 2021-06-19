@@ -57,11 +57,12 @@ export const CatCarousel = ({ Steps }) => {
       >
         {Steps.map((step, index) => (
           <div key={step.label}>
+            <div>{step.title}</div>
             {Math.abs(activeStep - index) <= 2 ? (
               <img
                 className={classes.img}
-                src={step.imgPath}
-                alt={step.label}
+                src={step.image}
+                alt={step.image}
               />
             ) : null}
           </div>

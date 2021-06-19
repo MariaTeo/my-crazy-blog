@@ -25,7 +25,7 @@ export const HomePopover = () => {
   const id = open ? 'simple-popover' : undefined;
 
   return (
-    <React.Fragment>
+    <div style={{ position: 'absolute' }}>
       <Button
         aria-describedby={id}
         variant="contained"
@@ -36,6 +36,7 @@ export const HomePopover = () => {
       </Button>
       <Popover
         id={id}
+        style={{ position: 'absolute', backgroundColor: 'rgba(0,0,0,0.5)' }}
         open={open}
         anchorE1={anchorE1}
         onClose={handleClose}
@@ -48,16 +49,22 @@ export const HomePopover = () => {
           horizontal: 'center',
         }}
       >
-        <HPS.Pop>
-          <Typography className={classes.typography}>
-            {' '}
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid
-            quod culpa dicta, labore accusamus placeat odio et, officiis
-            voluptatem delectus voluptate magni sit sint enim reprehenderit
-            praesentium deserunt eaque nam?
-          </Typography>
-        </HPS.Pop>
+        <Button 
+        variant="contained" color="grey" onClick={handleClose}
+        >
+          x
+        </Button>
+        <Typography className={classes.typography}>
+          {' '}
+          <h4>Welcome to my private Blog.</h4>
+          <p>Here you will be able to find out more details about me.</p>
+          <h5>In order to do so you will need to:</h5>
+          <HPS.MainPopover>
+            <p>Login or create a new account</p>
+            <p>Browse through my profile</p>
+          </HPS.MainPopover>
+        </Typography>
       </Popover>
-    </React.Fragment>
+    </div>
   );
 };

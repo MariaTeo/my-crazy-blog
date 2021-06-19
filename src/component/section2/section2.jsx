@@ -6,7 +6,7 @@ import { Steps } from './config';
 export const Section2 = () => {
   return (
     <Section>
-      <CatCarousel Steps={Steps} /> 
+      <CatCarousel Steps={Steps}/>
       {/* trimitem steps ca prop din section2; carousel e reusable */}
     </Section>
   );

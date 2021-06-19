@@ -1,5 +1,5 @@
 import styled from 'styled-components'
 
-export const Pop = styled.div`
-  
+export const MainPopover = styled.div`
+  font-size: 12px;
 `
