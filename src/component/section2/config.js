@@ -1,15 +1,18 @@
+import { CatWomanHero } from "../../constants/images";
+
+
 export const Steps = [
   {
     label: '1',
-    image: '',
+    image: CatWomanHero,
     title: 'How it all started',
-    content: '',
+    content: 'wssdfdgfyguy',
   },
   {
     label: '2',
     image: '',
     title: 'Gallery',
-    content: '',
+    content: 'asdfyguhj',
   },
   {
     label: '3',

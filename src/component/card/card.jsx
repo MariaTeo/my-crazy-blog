@@ -8,11 +8,11 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import PropTypes from 'prop-types'
-import CatWomanHero from '../../constants/images';
+import {CatWomanHero} from '../../constants/images';
 
 const useStyles = makeStyles({
   root: {
-    maxWidth: 345,
+    width: '100%',
   },
   media: {
     height: 140,
@@ -55,7 +55,7 @@ CarourselCard.propTypes = {
 }
 
 CarourselCard.defaultProps = {
-  image: {CatWomanHero},
+  image: CatWomanHero,
   title: 'Detalii mai multe', 
   content: 'mai multi cacati cu mai mult content de cacat'
 }

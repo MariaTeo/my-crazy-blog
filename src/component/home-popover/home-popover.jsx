@@ -24,6 +24,14 @@ export const HomePopover = () => {
   const open = Boolean(anchorE1);
   const id = open ? 'simple-popover' : undefined;
 
+  const pop = { 
+    padingBottom: '100rem', position: 'absolute',backgroundColor: 'rgba(0,0,0,0.5)' 
+  }
+
+  const buttonClose = {
+    marginLeft: '370px'
+  }
+
   return (
     <div style={{ position: 'absolute' }}>
       <Button
@@ -36,7 +44,6 @@ export const HomePopover = () => {
       </Button>
       <Popover
         id={id}
-        style={{ position: 'absolute', backgroundColor: 'rgba(0,0,0,0.5)' }}
         open={open}
         anchorE1={anchorE1}
         onClose={handleClose}
@@ -48,9 +55,11 @@ export const HomePopover = () => {
           vertical: 'top',
           horizontal: 'center',
         }}
+        style={pop}
       >
         <Button 
         variant="contained" color="grey" onClick={handleClose}
+        style={buttonClose}
         >
           x
         </Button>

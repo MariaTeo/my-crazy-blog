@@ -5,6 +5,7 @@ import Button from '@material-ui/core/Button';
 import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import SwipeableViews from 'react-swipeable-views';
+import { CarourselCard } from '../card/card';
 
 //mereu incepi cu baza(root) ----> CSS in javaScript
 const useStyles = makeStyles((theme) => ({
@@ -57,13 +58,8 @@ export const CatCarousel = ({ Steps }) => {
       >
         {Steps.map((step, index) => (
           <div key={step.label}>
-            <div>{step.title}</div>
             {Math.abs(activeStep - index) <= 2 ? (
-              <img
-                className={classes.img}
-                src={step.image}
-                alt={step.image}
-              />
+              <CarourselCard image={step.image} title={step.title} content={step.content} />
             ) : null}
           </div>
         ))}
@@ -71,7 +67,7 @@ export const CatCarousel = ({ Steps }) => {
       <MobileStepper
         steps={maxSteps}
         position="static"
-        variant="text"
+        variant="dots"
         activeStep={activeStep}
         nextButton={
           <Button
