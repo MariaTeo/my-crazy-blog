@@ -15,7 +15,7 @@ const useStyles = makeStyles({
     width: '100%',
   },
   media: {
-    height: 140,
+    height: 220,
   },
 });
 
@@ -28,10 +28,12 @@ export const CarourselCard = ({image, title, content}) => {
         <CardMedia
           className={classes.media}
           image={image}
-          title={title}
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
+              {title}
+          </Typography>
+            <Typography gutterBottom variant="h6" component="h2">
             {content}
           </Typography>
         </CardContent>

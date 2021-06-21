@@ -17,22 +17,24 @@ export const Navigation = () => {
     setOpen(false)
   }
 
+  console.log(open)
+
   return (
     <div className={classes.root}>
-      <nav>
-        <Button onClick={openPopup} variant='outlined' color='primary'>
+      <nav className={classes.nav}>
+        <Button onClick={openPopup} variant='contained' color='grey'>
           Log in
         </Button>
-        <Button color='secondary' >
+        <Button  color='secondary' >
           Register
         </Button>
-        <Link to={ABOUT}>
+        <Link className={classes.link} to={ABOUT}>
           About me
         </Link>
-        <Link to={CONTACT}>
+        <Link className={classes.link} to={CONTACT}>
           Contact
         </Link>
-        <Link to={MY_PROJECTS}>
+        <Link className={classes.link} to={MY_PROJECTS}>
           My projects
         </Link>
       </nav>

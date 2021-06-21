@@ -3,7 +3,7 @@ import { CatCarousel } from '../carousel/carousel';
 import { Section } from '../section/section';
 import { Steps } from './config';
 
-export const Section2 = () => {
+export const MainPage = () => {
   return (
     <Section>
       <CatCarousel Steps={Steps}/>

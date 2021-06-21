@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Avatar, Button, Paper, TextField } from '@material-ui/core';
+import { Paper, TextField } from '@material-ui/core';
 import {Form} from 'formik'
 export const StyledPaper = styled(Paper)`
   && {
@@ -29,6 +29,6 @@ export const StyledTextField = styled(TextField)`
 
 export const StyledTitle = styled.h2`
   text-align: center;
-  font-size: 2.7vw;
-  font-family: Arial, Helvetica, sans-serif;
+    font-size: 23px;
+  font-family: 'Arial';
 `

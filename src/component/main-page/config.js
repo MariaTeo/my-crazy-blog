@@ -1,16 +1,16 @@
-import { CatWomanHero } from "../../constants/images";
+import { CatWomanHero, BatmanAndCatWoman } from "../../constants/images";
 
 
 export const Steps = [
   {
     label: '1',
     image: CatWomanHero,
-    title: 'How it all started',
-    content: 'wssdfdgfyguy',
+    title: 'What to expect',
+    content: 'On this blog you will be able to see my profile, browse through my image gallery and other cool stuff.',
   },
   {
     label: '2',
-    image: '',
+    image: BatmanAndCatWoman,
     title: 'Gallery',
     content: 'asdfyguhj',
   },

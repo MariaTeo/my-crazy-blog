@@ -1,13 +1,15 @@
 import React from 'react'
 import { Hero } from '../component/hero/hero'
-import { Section2 } from '../component/section2/section2'
+import { MainPage } from '../component/main-page/main-page'
+
 
 export const HomePage = () => {
 
   return (
     <div>
       <Hero />
-      <Section2 />
+      <MainPage
+       />
     </div>
   )
 }
