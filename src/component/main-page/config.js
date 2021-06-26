@@ -11,19 +11,19 @@ export const Steps = [
   {
     label: '2',
     image: BatmanAndCatWoman,
-    title: 'Gallery',
-    content: 'asdfyguhj',
+    title: 'My partner in crime',
+    content: '',
   },
   {
     label: '3',
     image: '',
-    title: '',
-    content: '',
+    title: 'Gallery',
+    content: 'This is where you will be able to browse through my photo gallery and add pictures to favourites.',
   },
   {
     label: '4',
     image: '',
-    title: 'Pe seara',
-    content: '',
+    title: 'Fun facts',
+    content: 'I will be posting here random fun facts about me and my life. Stay tuned! ;)',
   }
 ]

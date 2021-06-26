@@ -7,7 +7,7 @@ export const MainPage = () => {
   return (
     <Section>
       <CatCarousel Steps={Steps}/>
-      {/* trimitem steps ca prop din section2; carousel e reusable */}
+      {/* trimitem steps ca prop din main-page; carousel e reusable */}
     </Section>
   );
 };

@@ -16,11 +16,11 @@ import { VisibilityOff as VisibilityOffIcon } from '@material-ui/icons/Visibilit
 
 
 export const LoginForm = ({ open, handleClose }) => {
-  const initialValues = {
-    username: '',
-    email: '',
-    password: '',
-  };
+  // const initialValues = {
+  //   username: '',
+  //   email: '',
+  //   password: '',
+  // };
 
   const paperStyle = { 
     height: '400px',
@@ -36,12 +36,12 @@ export const LoginForm = ({ open, handleClose }) => {
 
   const buttonX = <CloseIcon />;
   const buttonCloseStyle = {
-    margin: '0 0  0 320px',
+    margin: '0 0  0 340px',
     padding: '3px 10px',
   };
 
-  const eyeClosed = <VisibilityOffIcon/>
-  const eye = <VisibilityIcon />;
+  const eyeClosed = () => <VisibilityOffIcon/>
+  const eye = () => <VisibilityIcon />;
   const eyeStyle = {
     display: 'flex',
     alignSelf: 'right',
@@ -49,24 +49,25 @@ export const LoginForm = ({ open, handleClose }) => {
     marginTop: '-40px',
     marginRight: '5px',
   };
-
+  
+    const rememberStyle = {
+      marginTop: '10px',
+      marginLeft: '15px',
+    };
+  
   const [passwordShown, setPasswordShown] = useState(false);
   const togglePasswordVisibility = () => {
-    setPasswordShown(passwordShown ? false : true );
+    setPasswordShown(passwordShown ? false : true,
+      eye ? eyeClosed : eye );
     console.log(togglePasswordVisibility)
-  };
-
-  const rememberStyle = {
-    marginTop: '10px',
-    marginLeft: '15px',
   };
  
   
   return (
-    <Popup open={open}>
+    <Popup open={open} handleClose={handleClose}>
       <Grid path="/login-form">
         <LF.StyledPaper elevation={10} style={paperStyle}>
-          <IconButton style={buttonCloseStyle} onClick={() => handleClose(!open)}>
+          <IconButton style={buttonCloseStyle} onClick={handleClose}>
             {buttonX}
           </IconButton>
           <Grid align="center">
