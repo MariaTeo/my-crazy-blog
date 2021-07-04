@@ -1,7 +1,7 @@
 import { Button } from '@material-ui/core';
 import { Link } from '@reach/router';
 import React, { useState } from 'react';
-import { ABOUT, CONTACT, MY_PROJECTS } from '../../constants/routes';
+import { ABOUT, CONTACT, LOGIN, MY_PROJECTS, REGISTER } from '../../constants/routes';
 import { LoginForm } from '../login-form/login-form';
 import { RegisterForm } from '../register-form/register-form';
 import { useStyles } from './navigation.style';
@@ -24,12 +24,6 @@ export const Navigation = () => {
   return (
     <div className={classes.root}>
       <nav className={classes.nav}>
-        <Button onClick={() => handleOpen('login')} variant="contained" color="primary">
-          Log in
-        </Button>
-        <Button onClick={() => handleOpen('register')} color="secondary">
-          Register
-        </Button>
         <Link className={classes.link} to={ABOUT}>
           About me
         </Link>
@@ -39,9 +33,13 @@ export const Navigation = () => {
         <Link className={classes.link} to={MY_PROJECTS}>
           My projects
         </Link>
+        <Link className={classes.link} to={LOGIN}>
+          Login
+        </Link>
+        <Link className={classes.link} to={REGISTER}>
+          REgister
+        </Link>
       </nav>
-      <LoginForm open={loginOrRegister === 'login'} handleClose={handleClose} />
-      {/* <RegisterForm open={loginOrRegister === 'register'} handleClose={handleClose} /> */}
     </div>
   );
 };

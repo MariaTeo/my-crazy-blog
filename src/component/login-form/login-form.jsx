@@ -78,7 +78,6 @@ export const LoginForm = ({ open, handleClose }) => {
   };
 
   return (
-    <Popup open={!!open} handleClose={handleClose}>
       <Formik
         initialValues={initialLoginValues}
         validate={validate}
@@ -158,7 +157,7 @@ export const LoginForm = ({ open, handleClose }) => {
                   <Typography>
                     {' '}
                     No account?
-                    <Link href="#"> Register</Link>
+                    <Link href="/register"> Register</Link>
                   </Typography>
                 </div>
               </LF.StyledPaper>
@@ -166,6 +165,5 @@ export const LoginForm = ({ open, handleClose }) => {
           </Form>
         )}
       </Formik>
-    </Popup>
   );
 };
