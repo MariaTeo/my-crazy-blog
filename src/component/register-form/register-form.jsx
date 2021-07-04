@@ -16,11 +16,10 @@ import VisibilityOffIcon from '@material-ui/icons/VisibilityOff';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import Input from '@material-ui/core/Input';
-import InputLabel from '@material-ui/core/InputLabel';
 
 export const RegisterForm = ({ open, handleClose }) => {
   const paperStyle = {
-    height: '600px',
+    height: '550px',
     width: '400px',
     padding: '10px',
   };
@@ -41,7 +40,6 @@ export const RegisterForm = ({ open, handleClose }) => {
     marginLeft: '30px',
   };
 
-
   const [toggleEye, setToggleEye] = useState(false);
   const handleToggleEye = () => {
     setToggleEye(!toggleEye);
@@ -61,26 +59,23 @@ export const RegisterForm = ({ open, handleClose }) => {
             <S.StyledTextField
               label="Create username"
               placeholder="Create username"
-              fullWidth
+              width="70%"
               required
             />
             <S.StyledTextField
               label="Enter your email"
               placeholder="Enter your email"
-              fullWidth
+              width="70%"
               required
             />
             <S.StyledTextField
               label="Create new password"
               placeholder="At least one uppercase and one number"
-              fullWidth
+              width="80%"
               required
               type={toggleEye ? 'text' : 'password'}
             />
             <FormControl>
-              <InputLabel htmlFor="standard-adorment-password">
-                Password
-              </InputLabel>
               <Input
                 label="Re-enter password"
                 placeholder="Re-enter password"
@@ -89,23 +84,20 @@ export const RegisterForm = ({ open, handleClose }) => {
                 type={toggleEye ? 'text' : 'password'}
                 endAdornment={
                   <InputAdornment position="end">
-                    <IconButton onClick={handleToggleEye}><>
-                      {toggleEye && (
-                        <VisibilityIcon onClick={handleToggleEye} />
-                      )}
-                      {!toggleEye && (
-                        <VisibilityOffIcon onClick={handleToggleEye} />
-                      )}
-                    </></IconButton>
-                    
+                    <IconButton onClick={handleToggleEye}>
+                      <>
+                        {toggleEye && (
+                          <VisibilityIcon onClick={handleToggleEye} />
+                        )}
+                        {!toggleEye && (
+                          <VisibilityOffIcon onClick={handleToggleEye} />
+                        )}
+                      </>
+                    </IconButton>
                   </InputAdornment>
                 }
               ></Input>
             </FormControl>
-
-            {/* <i style={eyeOpenStyle} onClick={togglePasswordVisibility}>
-              {eyeOff ? eyeOpen : eyeOff}
-            </i> */}
           </Grid>
           <FormControlLabel
             control={<Checkbox name="checkedBox" color="primary" />}
@@ -123,9 +115,8 @@ export const RegisterForm = ({ open, handleClose }) => {
           </Button>
           <div style={questionStyle}>
             <Typography>
-              {' '}
               Already have an account?
-              <Link path="/login-form"> Login into your account</Link>
+              <Link to="#login-form"> Login into your account</Link>
             </Typography>
           </div>
         </S.StyledPaper>

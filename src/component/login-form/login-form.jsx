@@ -7,41 +7,52 @@ import {
   Checkbox,
   Button,
 } from '@material-ui/core';
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { Popup } from '../popup/popup';
 import * as LF from './login-form.style';
-import { Visibility as VisibilityIcon } from '@material-ui/icons';
-import { Close as CloseIcon } from '@material-ui/icons';
-import { VisibilityOff as VisibilityOffIcon } from '@material-ui/icons/VisibilityOff';
+import {
+  Visibility as VisibilityIcon,
+  Close as CloseIcon,
+  VisibilityOff as VisibilityOffIcon,
+} from '@material-ui/icons';
+import { Formik, Form, Field } from 'formik';
 
+const initialLoginValues = {
+  username: '',
+  email: '',
+  password: '',
+};
+
+const validate = (values) => {
+  const error = {};
+
+  if (values.username && values.username.length < 6) {
+    error.username = 'Username must be minimum 6 letters.';
+  }
+
+  return error;
+};
 
 export const LoginForm = ({ open, handleClose }) => {
-  // const initialValues = {
-  //   username: '',
-  //   email: '',
-  //   password: '',
-  // };
-
-  const paperStyle = { 
-    height: '400px',
-    width: '360px',
+  const emailRef = useRef();
+  const paperStyle = {
+    height: '500px',
+    width: '400px',
     padding: '10px',
-   };
-
-  const questionsStyle = { margin: '30px 30px' };
-  const loginStyle = { 
-    width: '300px',
-    marginLeft: '30px'
   };
 
-  const buttonX = <CloseIcon />;
+  const questionsStyle = { margin: '30px 30px' };
+  const loginStyle = {
+    width: '360px',
+    marginLeft: '20px',
+    marginTop: '10px',
+  };
+
   const buttonCloseStyle = {
-    margin: '0 0  0 340px',
+    margin: '0 0  0 360px',
     padding: '3px 10px',
   };
 
-  const eyeClosed = () => <VisibilityOffIcon/>
-  const eye = () => <VisibilityIcon />;
   const eyeStyle = {
     display: 'flex',
     alignSelf: 'right',
@@ -49,75 +60,112 @@ export const LoginForm = ({ open, handleClose }) => {
     marginTop: '-40px',
     marginRight: '5px',
   };
-  
-    const rememberStyle = {
-      marginTop: '10px',
-      marginLeft: '15px',
-    };
-  
+
+  const rememberStyle = {
+    marginTop: '50px',
+    marginLeft: '40px',
+  };
+
   const [passwordShown, setPasswordShown] = useState(false);
   const togglePasswordVisibility = () => {
-    setPasswordShown(passwordShown ? false : true,
-      eye ? eyeClosed : eye );
-    console.log(togglePasswordVisibility)
+    setPasswordShown(!passwordShown);
   };
- 
-  
-  return (
-    <Popup open={open} handleClose={handleClose}>
-      <Grid path="/login-form">
-        <LF.StyledPaper elevation={10} style={paperStyle}>
-          <IconButton style={buttonCloseStyle} onClick={handleClose}>
-            {buttonX}
-          </IconButton>
-          <Grid align="center">
-            <LF.StyledTitle>Log In</LF.StyledTitle>
-          </Grid>
-          <Grid align="center"> 
 
-          <LF.StyledTextField
-            label="Username"
-            placeholder="Enter username"
-            fullWidth
-            required
-          />
-          <LF.StyledTextField
-            label="Password"
-            placeholder="Enter password"
-            fullWidth
-            required
-            type={passwordShown ? 'text' : 'password'}
-          />
-          <i onClick= {togglePasswordVisibility} style={eyeStyle}>
-            {eye}
-          </i>
-          </Grid>
-          <FormControlLabel
-            control={<Checkbox name="checkedBox" color="primary" />}
-            label="Remember me"
-            style={rememberStyle}
-          />
-          <Button
-            type="submit"
-            color="primary"
-            variant="contained"
-            style={loginStyle}
-            fullWidth
-          >
-            Log in
-          </Button>
-          <div style={questionsStyle}>
-            <Typography>
-              <Link href="#">Forgot password?</Link>
-            </Typography>
-            <Typography>
-              {' '}
-              No account?
-              <Link href="#"> Register</Link>
-            </Typography>
-          </div>
-        </LF.StyledPaper>
-      </Grid>
+  console.log(passwordShown);
+
+  const onSubmit = (values) => {
+    console.log(values);
+  };
+
+  return (
+    <Popup open={!!open} handleClose={handleClose}>
+      <Formik
+        initialValues={initialLoginValues}
+        validate={validate}
+        onSubmit={onSubmit}
+      >
+        {({ values, isValid }) => (
+          <Form>
+            <Grid>
+              <LF.StyledPaper elevation={10} style={paperStyle}>
+                <IconButton
+                  type="button"
+                  style={buttonCloseStyle}
+                  onClick={handleClose}
+                >
+                  <CloseIcon />
+                </IconButton>
+
+                <Grid align="center">
+                  <LF.StyledTitle>Log In</LF.StyledTitle>
+                </Grid>
+
+                <Grid align="center">
+                  <Field
+                    label="Email"
+                    placeholder="Enter email"
+                    component={LF.StyledTextField}
+                    fullWidth
+                    required
+                    inputRef={emailRef}
+                    type="email"
+                    name="email"
+                    id="email"
+                  />
+                  <Field
+                    label="Username"
+                    placeholder="Enter username"
+                    fullWidth
+                    required
+                    component={LF.StyledTextField}
+                    type="text"
+                    name="username"
+                    id="username"
+                  />
+                  <Field
+                    label="Password"
+                    placeholder="Enter password"
+                    fullWidth
+                    required
+                    type={passwordShown ? 'text' : 'password'}
+                    component={LF.StyledTextField}
+                    name="password"
+                    id="password"
+                  />
+                  <IconButton onClick={togglePasswordVisibility}>
+                    {passwordShown && <VisibilityIcon />}
+                    {!passwordShown && <VisibilityOffIcon />}
+                  </IconButton>
+                </Grid>
+                <FormControlLabel
+                  control={<Checkbox name="checkedBox" color="primary" />}
+                  label="Remember me"
+                  style={rememberStyle}
+                />
+                <Button
+                  type="submit"
+                  color="primary"
+                  variant="contained"
+                  style={loginStyle}
+                  fullWidth
+                >
+                  Log in
+                </Button>
+                <div style={questionsStyle}>
+                  <Typography>
+                    <Link href="#">Forgot password?</Link>
+                  </Typography>
+                  <Typography>
+                    {' '}
+                    No account?
+                    <Link href="#"> Register</Link>
+                  </Typography>
+                </div>
+              </LF.StyledPaper>
+            </Grid>
+          </Form>
+        )}
+      </Formik>
     </Popup>
   );
 };

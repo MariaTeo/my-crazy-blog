@@ -8,32 +8,26 @@ import { useStyles } from './navigation.style';
 
 export const Navigation = () => {
   const classes = useStyles();
-  const [openRegister, setOpenRegister] = useState(false);
-  const [openLogin, setOpenLogin] = useState(false);
-  const handleOpenRegister = () => {
-    setOpenRegister(true);
-  };
-  const handleOpenLogin = () => {
-    setOpenLogin(true);
+  const [loginOrRegister, setLoginOrRegister] = useState(null);
+
+  const handleOpen = (panel) => {
+    setLoginOrRegister(panel);
   };
 
-  const handleCloseRegister = () => {
-    setOpenRegister(false);
-  };
-  const handleCloseLogin = () => {
-    setOpenLogin(false);
+  const handleClose = () => {
+    setLoginOrRegister(null);
   };
 
 
-
+  console.log(loginOrRegister)
   
   return (
     <div className={classes.root}>
       <nav className={classes.nav}>
-        <Button onClick={handleOpenLogin} variant="contained" color="primary">
+        <Button onClick={() => handleOpen('login')} variant="contained" color="primary">
           Log in
         </Button>
-        <Button onClick={handleOpenRegister} color="secondary">
+        <Button onClick={() => handleOpen('register')} color="secondary">
           Register
         </Button>
         <Link className={classes.link} to={ABOUT}>
@@ -46,8 +40,8 @@ export const Navigation = () => {
           My projects
         </Link>
       </nav>
-      <LoginForm open={openLogin} handleClose={handleCloseLogin} />
-      <RegisterForm open={openRegister} handleClose={handleCloseRegister} />
+      <LoginForm open={loginOrRegister === 'login'} handleClose={handleClose} />
+      {/* <RegisterForm open={loginOrRegister === 'register'} handleClose={handleClose} /> */}
     </div>
   );
 };
