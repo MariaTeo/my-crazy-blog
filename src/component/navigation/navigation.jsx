@@ -1,29 +1,34 @@
-import { Button } from '@material-ui/core';
 import { Link } from '@reach/router';
-import React, { useState } from 'react';
-import { ABOUT, CONTACT, LOGIN, MY_PROJECTS, REGISTER } from '../../constants/routes';
-import { LoginForm } from '../login-form/login-form';
-import { RegisterForm } from '../register-form/register-form';
+import React from 'react';
+import {
+  ABOUT,
+  CONTACT,
+  HOME,
+  LOGIN,
+  MY_PROJECTS,
+  REGISTER,
+} from '../../constants/routes';
 import { useStyles } from './navigation.style';
+import { NavLogo } from '../../constants/images';
 
 export const Navigation = () => {
   const classes = useStyles();
-  const [loginOrRegister, setLoginOrRegister] = useState(null);
 
-  const handleOpen = (panel) => {
-    setLoginOrRegister(panel);
-  };
-
-  const handleClose = () => {
-    setLoginOrRegister(null);
-  };
-
-
-  console.log(loginOrRegister)
-  
   return (
     <div className={classes.root}>
+      <nav className={classes.navLogo}>
+        <img src={NavLogo} alt="logo catwoman" className={classes.logo} />
+      </nav>
       <nav className={classes.nav}>
+        <Link className={classes.link} to={HOME}>
+          Home
+        </Link>
+        <Link className={classes.link} to={LOGIN}>
+          Login
+        </Link>
+        <Link className={classes.link} to={REGISTER}>
+          Register
+        </Link>
         <Link className={classes.link} to={ABOUT}>
           About me
         </Link>
@@ -32,12 +37,6 @@ export const Navigation = () => {
         </Link>
         <Link className={classes.link} to={MY_PROJECTS}>
           My projects
-        </Link>
-        <Link className={classes.link} to={LOGIN}>
-          Login
-        </Link>
-        <Link className={classes.link} to={REGISTER}>
-          REgister
         </Link>
       </nav>
     </div>

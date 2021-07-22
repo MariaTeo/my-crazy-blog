@@ -7,8 +7,7 @@ import {
   Checkbox,
   Button,
 } from '@material-ui/core';
-import React, { useState, useRef } from 'react';
-import { Popup } from '../popup/popup';
+import React, { useState, useRef, useEffect } from 'react';
 import * as LF from './login-form.style';
 import {
   Visibility as VisibilityIcon,
@@ -16,6 +15,7 @@ import {
   VisibilityOff as VisibilityOffIcon,
 } from '@material-ui/icons';
 import { Formik, Form, Field } from 'formik';
+import { auth, db } from '../../config/firebase-config';
 
 const initialLoginValues = {
   username: '',
@@ -53,29 +53,41 @@ export const LoginForm = ({ open, handleClose }) => {
     padding: '3px 10px',
   };
 
-  const eyeStyle = {
-    display: 'flex',
-    alignSelf: 'right',
-    justifyContent: 'right',
-    marginTop: '-40px',
-    marginRight: '5px',
-  };
-
   const rememberStyle = {
     marginTop: '50px',
     marginLeft: '40px',
   };
 
-  const [passwordShown, setPasswordShown] = useState(false);
-  const togglePasswordVisibility = () => {
-    setPasswordShown(!passwordShown);
+  const [ user, setUser ] = useState({})
+  useEffect(() => {
+    if(user.uid) {
+      db.collection('cont-nou').add({
+        uid: user.uid,
+        message: 'ia-uite'
+      })
+    }
+  }, [user]) 
+
+
+  
+  const [toggleEye, setToggleEye] = useState(false);
+  const handleToggleEye = () => {
+    setToggleEye(!toggleEye);
   };
 
-  console.log(passwordShown);
 
-  const onSubmit = (values) => {
-    console.log(values);
+  const onSubmit = async (values) => {
+    const { email, password } = values
+    try {
+      const { user } = await auth.signInWithEmailAndPassword(email, password)
+      console.log(user.email, user.uid)
+      setUser(user)
+    } catch (error) {
+      console.log(error)
+    }
+    
   };
+
 
   return (
       <Formik
@@ -85,6 +97,7 @@ export const LoginForm = ({ open, handleClose }) => {
       >
         {({ values, isValid }) => (
           <Form>
+            {/* <div>{user.uid}</div> */}
             <Grid>
               <LF.StyledPaper elevation={10} style={paperStyle}>
                 <IconButton
@@ -112,28 +125,18 @@ export const LoginForm = ({ open, handleClose }) => {
                     id="email"
                   />
                   <Field
-                    label="Username"
-                    placeholder="Enter username"
-                    fullWidth
-                    required
-                    component={LF.StyledTextField}
-                    type="text"
-                    name="username"
-                    id="username"
-                  />
-                  <Field
                     label="Password"
                     placeholder="Enter password"
                     fullWidth
                     required
-                    type={passwordShown ? 'text' : 'password'}
+                    type={toggleEye ? 'text' : 'password'}
                     component={LF.StyledTextField}
                     name="password"
                     id="password"
                   />
-                  <IconButton onClick={togglePasswordVisibility}>
-                    {passwordShown && <VisibilityIcon />}
-                    {!passwordShown && <VisibilityOffIcon />}
+                  <IconButton onClick={handleToggleEye}>
+                    {toggleEye && <VisibilityIcon />}
+                    {!toggleEye && <VisibilityOffIcon />}
                   </IconButton>
                 </Grid>
                 <FormControlLabel
