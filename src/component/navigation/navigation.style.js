@@ -7,12 +7,11 @@ export const useStyles = makeStyles((theme) => ({
     height: '40px',
     width: '100%',
     zIndex: 3,
-    display: 'grid',
-    gridTemplateColumns: '3, 1fr',
-    gridColumn: '1/-1',
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
 
-    background:
-      'linear-gradient(158deg, rgba(2,0,36,1) 0%, rgba(4,4,47,1) 0%, rgba(4,4,47,1) 24%, rgba(4,17,60,1) 55%, rgba(0,212,255,1) 100%)',
+    background: 'linear-gradient(158deg, rgba(2,0,36,1) 0%, rgba(4,4,47,1) 0%, rgba(4,4,47,1) 24%, rgba(4,17,60,1) 55%, rgba(0,212,255,1) 100%)',
     transition: 'opacity .5s ease-in',
   },
   nav: {
@@ -20,11 +19,11 @@ export const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'flex-end',
+    position: 'fixed',
 
   },
   navLogo: {
-    alignSelf: 'center',
-
+    alignSelf: 'left',
   },
   link: {
     fontSize: '18px',
@@ -36,7 +35,7 @@ export const useStyles = makeStyles((theme) => ({
     backgroundColor: 'white',
     padding: '8px',
     marginRight: '20px',
-  
+
     '&&:hover': {
       transition: '250ms',
       backgroundColor: 'black',
@@ -44,8 +43,10 @@ export const useStyles = makeStyles((theme) => ({
     },
   },
   logo: {
-    height: '80px',
-    width: 'auto',
     left: 0,
+    top: 0,
+  heigh: '50px',
+  width: '150px',
+  position: 'fixed'
   },
 }));

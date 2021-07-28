@@ -7,18 +7,18 @@ import { StyledRouter } from './app.style';
 import { LoginForm } from '../login-form/login-form';
 import { RegisterForm } from '../register-form/register-form';
 
+
 export const App = () => {  
   return (
-    <div>
-      <Navigation />
-      <StyledRouter >
-        <HomePage path={HOME}/>
-        <AboutMe path={ABOUT}/>
-        <LoginForm path={LOGIN}/>
-        <RegisterForm path={REGISTER}/>
-      </StyledRouter>
-      {/* <Footer> */}
-    </div>
+      <div>
+        <Navigation />
+        <StyledRouter >
+          <HomePage path={HOME}/>
+          <AboutMe path={ABOUT}/>
+          <LoginForm path={LOGIN}/>
+          <RegisterForm path={REGISTER}/>
+        </StyledRouter>
+      </div>
   );
 };
 
