@@ -1,5 +1,5 @@
-import { Link } from '@reach/router';
-import React from 'react';
+import { Link } from "@reach/router"
+import React from "react"
 import {
   ABOUT,
   CONTACT,
@@ -7,38 +7,46 @@ import {
   LOGIN,
   MY_PROJECTS,
   REGISTER,
-} from '../../constants/routes';
-import { useStyles } from './navigation.style';
-import { NavLogo } from '../../constants/images';
+} from "../../constants/routes"
+import { useStyles } from "./navigation.style"
+import { NavLogo } from "../../constants/images"
+import * as S from "./navigation.style"
 
 export const Navigation = () => {
-  const classes = useStyles();
-
   return (
-    <div className={classes.root}>
-      <nav className={classes.navLogo}>
-        <img src={NavLogo} alt="logo catwoman" className={classes.logo} />
-      </nav>
-      <nav className={classes.nav}>
-        <Link className={classes.link} to={HOME}>
-          Home
-        </Link>
-        <Link className={classes.link} to={LOGIN}>
-          Login
-        </Link>
-        <Link className={classes.link} to={REGISTER}>
-          Register
-        </Link>
-        <Link className={classes.link} to={ABOUT}>
-          About me
-        </Link>
-        <Link className={classes.link} to={CONTACT}>
-          Contact
-        </Link>
-        <Link className={classes.link} to={MY_PROJECTS}>
-          My projects
-        </Link>
-      </nav>
-    </div>
-  );
-};
+    <S.Root>
+      <S.NavLogo>
+        <S.Logo src={NavLogo} alt="logo catwoman"></S.Logo>
+      </S.NavLogo>
+      <S.Nav>
+        <S.Nav2>
+          <S.Linkn>
+            <Link to={HOME}>Home</Link>
+          </S.Linkn>
+
+          <S.Linkn>
+            <Link to={LOGIN}>Login</Link>
+          </S.Linkn>
+          
+          <S.Linkn>
+            <Link to={REGISTER}>Register</Link>
+          </S.Linkn>
+        </S.Nav2>
+
+        <S.Nav2>
+          <S.Linkn>
+            <Link to={ABOUT}>About me</Link>
+          </S.Linkn>
+
+          <S.Linkn>
+            <Link to={CONTACT}>Contact</Link>
+          </S.Linkn>
+
+          <S.Linkn>
+            <Link to={MY_PROJECTS}>My projects</Link>
+          </S.Linkn>
+        </S.Nav2>
+      </S.Nav>
+    </S.Root>
+  )
+}

@@ -1,4 +1,4 @@
-import { CatWomanHero, BatmanAndCatWoman } from "../../constants/images";
+import { CatWomanHero, BatmanAndCatWoman, Gallery, FunFact } from "../../constants/images";
 
 
 export const Steps = [
@@ -16,13 +16,13 @@ export const Steps = [
   },
   {
     label: '3',
-    image: '',
+    image: Gallery,
     title: 'Gallery',
     content: 'This is where you will be able to browse through my photo gallery and add pictures to favourites.',
   },
   {
     label: '4',
-    image: '',
+    image: FunFact,
     title: 'Fun facts',
     content: 'I will be posting here random fun facts about me and my life. Stay tuned! ;)',
   }

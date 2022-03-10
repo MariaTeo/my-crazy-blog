@@ -19,9 +19,9 @@ const useStyles = makeStyles({
   },
 });
 
-export const CarourselCard = ({image, title, content}) => {
+export const CarouselCard = ({image, title, content}) => {
   const classes = useStyles();
-
+console.log(image, "dads")
   return (
     <Card className={classes.root}>
       <CardActionArea>
@@ -50,13 +50,13 @@ export const CarourselCard = ({image, title, content}) => {
   );
 };
 
-CarourselCard.propTypes = {
+CarouselCard.propTypes = {
   image: PropTypes.any,
   title: PropTypes.string,
   content: PropTypes.string
 }
 
-CarourselCard.defaultProps = {
+CarouselCard.defaultProps = {
   image: CatWomanHero,
   title: 'Detalii mai multe', 
   content: 'mai multi cacati cu mai mult content de cacat'
